@@ -2,7 +2,7 @@ import sqlite3, json
 
 
 def base_film(title):
-    """Возвращает фильм по имени за 2021 год"""
+    """Возвращает фильм по названию"""
     film = sqlite3.connect('netflix.db').cursor().execute(f"""
     SELECT title, country, release_year, listed_in, description
     FROM netflix
