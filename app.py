@@ -30,9 +30,9 @@ def films_for_family():
     return jsonify(rating_family())
 
 
-@app.route('/rating/adult/')
+@app.route('/rating/adult/')  # фильмы для взрослых людей
 def films_for_adult():
-    return jsonify(rating_adult())  # фильмы для взрослых людей
+    return jsonify(rating_adult())
 
 
 @app.route('/genre/<genre>', methods=['GET'])  # поиск фильмов по жанру
