@@ -2,14 +2,13 @@ import sqlite3, json
 
 
 def base_film(title):
-    """Возвращает список фильмов за 2021 год"""
+    """Возвращает фильм по имени за 2021 год"""
     film = sqlite3.connect('netflix.db').cursor().execute(f"""
     SELECT title, country, release_year, listed_in, description
     FROM netflix
     WHERE title LIKE '%{title}%'
     AND title IS NOT NUll
-    AND release_year = 2021
-    ORDER BY date_added DESC
+    ORDER BY release_year DESC
     """).fetchone()
     sqlite3.connect('netflix.db').close()
 
