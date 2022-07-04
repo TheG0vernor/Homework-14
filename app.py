@@ -25,21 +25,6 @@ def films_for_children(rating):
     return jsonify(base_rating(rating))
 
 
-# @app.route('/rating/children/')  # фильмы для детей
-# def films_for_children():
-#     return jsonify(rating_children())
-#
-#
-# @app.route('/rating/family/')  # фильмы для семьи
-# def films_for_family():
-#     return jsonify(rating_family())
-#
-#
-# @app.route('/rating/adult/')  # фильмы для взрослых людей
-# def films_for_adult():
-#     return jsonify(rating_adult())
-
-
 @app.route('/genre/<genre>', methods=['GET'])  # поиск фильмов по жанру
 def films_by_genre(genre):
     return jsonify(search_genre(genre))
