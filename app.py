@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from functions import range_of_years, rating_children, rating_adult, rating_family, search_genre
-from database import base_film
+from functions import range_of_years, search_genre
+from database import base_film, base_rating
 
 
 app = Flask(__name__)
@@ -20,19 +20,24 @@ def year_to_year():
     return jsonify(range_of_years(from_, to))
 
 
-@app.route('/rating/children/')  # фильмы для детей
-def films_for_children():
-    return jsonify(rating_children())
+@app.route('/rating/<rating>')  # фильмы в зависимости от рейтинга
+def films_for_children(rating):
+    return jsonify(base_rating(rating))
 
 
-@app.route('/rating/family/')  # фильмы для семьи
-def films_for_family():
-    return jsonify(rating_family())
-
-
-@app.route('/rating/adult/')  # фильмы для взрослых людей
-def films_for_adult():
-    return jsonify(rating_adult())
+# @app.route('/rating/children/')  # фильмы для детей
+# def films_for_children():
+#     return jsonify(rating_children())
+#
+#
+# @app.route('/rating/family/')  # фильмы для семьи
+# def films_for_family():
+#     return jsonify(rating_family())
+#
+#
+# @app.route('/rating/adult/')  # фильмы для взрослых людей
+# def films_for_adult():
+#     return jsonify(rating_adult())
 
 
 @app.route('/genre/<genre>', methods=['GET'])  # поиск фильмов по жанру

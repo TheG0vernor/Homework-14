@@ -33,16 +33,34 @@ def base_years():
     return base_years_
 
 
-def base_rating():
+def base_rating(rating_):
     """Возвращает список фильмов для дальнейшего поиска по рейтингу"""
+    rating_dict = {"children": ('G', 'TV-G', 'TV-Y', 'TV-Y7', 'TV-Y7-FV'), "family": ('G', 'PG-13', 'PG', 'TV-PG', 'TV-14', 'TV-Y', 'TV-Y7', 'TV-Y7-FV'), "adult": ('NC-17', 'R', 'TV-MA', 'NR', 'UR')}
     films_rat = sqlite3.connect('netflix.db').cursor().execute("""
     SELECT title, rating, description
     FROM netflix
-    WHERE rating != ''
-    LIMIT 100
+    WHERE netflix.rating IN {rating_dict[rating_]}
     """).fetchall()
     sqlite3.connect('netflix.db').close()
-    return films_rat
+    new_list = []
+    for i in films_rat:
+        dict_ = {'title': i[0],
+                 'rating': i[1],
+                 'description': i[2][:-1]}
+        new_list.append(dict_)
+    return new_list
+
+
+# def base_rating():
+#     """Возвращает список фильмов для дальнейшего поиска по рейтингу"""
+#     films_rat = sqlite3.connect('netflix.db').cursor().execute("""
+#     SELECT title, rating, description
+#     FROM netflix
+#     WHERE rating != ''
+#     LIMIT 100
+#     """).fetchall()
+#     sqlite3.connect('netflix.db').close()
+#     return films_rat
 
 
 def base_genre():

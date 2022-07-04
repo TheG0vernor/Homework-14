@@ -12,43 +12,43 @@ def range_of_years(_1, _2):
     return new_list
 
 
-def rating_children():
-    """Находит фильмы для детей"""
-    list_children = ('G', 'TV-G', 'TV-Y', 'TV-Y7', 'TV-Y7-FV')
-    new_list = []
-    for i in base_rating():
-        if i[1] in list_children:
-            dict_ = {'title': i[0],
-                     'rating': i[1],
-                     'description': i[2][:-1]}
-            new_list.append(dict_)
-    return new_list
-
-
-def rating_family():
-    """Находит фильмы для семьи"""
-    list_family = ('G', 'PG-13', 'PG', 'TV-PG', 'TV-14', 'TV-Y', 'TV-Y7', 'TV-Y7-FV')
-    new_list = []
-    for i in base_rating():
-        if i[1] in list_family:
-            dict_ = {'title': i[0],
-                     'rating': i[1],
-                     'description': i[2][:-1]}
-            new_list.append(dict_)
-    return new_list
-
-
-def rating_adult():
-    """Находит фильмы для взрослой аудитории"""
-    list_adult = ('NC-17', 'R', 'TV-MA', 'NR', 'UR')
-    new_list = []
-    for i in base_rating():
-        if i[1] in list_adult:
-            dict_ = {'title': i[0],
-                     'rating': i[1],
-                     'description': i[2][:-1]}
-            new_list.append(dict_)
-    return new_list
+# def rating_children():
+#     """Находит фильмы для детей"""
+#     list_children = ('G', 'TV-G', 'TV-Y', 'TV-Y7', 'TV-Y7-FV')
+#     new_list = []
+#     for i in base_rating():
+#         if i[1] in list_children:
+#             dict_ = {'title': i[0],
+#                      'rating': i[1],
+#                      'description': i[2][:-1]}
+#             new_list.append(dict_)
+#     return new_list
+#
+#
+# def rating_family():
+#     """Находит фильмы для семьи"""
+#     list_family = ('G', 'PG-13', 'PG', 'TV-PG', 'TV-14', 'TV-Y', 'TV-Y7', 'TV-Y7-FV')
+#     new_list = []
+#     for i in base_rating():
+#         if i[1] in list_family:
+#             dict_ = {'title': i[0],
+#                      'rating': i[1],
+#                      'description': i[2][:-1]}
+#             new_list.append(dict_)
+#     return new_list
+#
+#
+# def rating_adult():
+#     """Находит фильмы для взрослой аудитории"""
+#     list_adult = ('NC-17', 'R', 'TV-MA', 'NR', 'UR')
+#     new_list = []
+#     for i in base_rating():
+#         if i[1] in list_adult:
+#             dict_ = {'title': i[0],
+#                      'rating': i[1],
+#                      'description': i[2][:-1]}
+#             new_list.append(dict_)
+#     return new_list
 
 
 def search_genre(gen):
